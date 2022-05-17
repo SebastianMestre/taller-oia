@@ -2,28 +2,31 @@
 
 Este es un apunte de programación competitiva, dirigido a estudiantes del politécnico que participan del taller de OIA. Incluye información sobre C++, algoritmos, y consejos para tener en cuenta a la hora de competir.
 
+El apunte presupone que se usa un entorno basado en Linux.
+
 # C++
 
 En la olimpiada usamos C++, una version mejorada de C que trae varias cosas que nos facilitan la vida.
 
-## `g++` (compilar por consola)
+## g++ (compilar por consola)
 
-Para compilar codigo en `C` por consola, se suele usar un comando como `gcc codigo.c -o mi_ejecutable`.
+Para compilar codigo en C por consola, se suele usar un comando como `gcc codigo.c -o mi_ejecutable`.
 
-Para C++ es muy parecido, pero se debe usar el comando `g++`.
+En C++ es muy parecido, pero se debe usar el comando `g++`.
 
 Por ejemplo, para generar un ejecutable llamado `baldosas` a partir de un archivo de codigo fuente `baldosas.cpp`, escribimos `g++ baldosas.cpp -o baldosas`
 
-## `cin` y `cout` (entrada y salida por consola)
+## cin y cout (entrada y salida por consola)
 
-### referencia rapida
+```c++
+cin >> x >> y;  // lee valores para las variables `x` e `y` por consola.
+cout << x << y; // imprime las variables `x` e `y` por consola.
+// documentación:
+// https://en.cppreference.com/w/cpp/io/cin
+// https://en.cppreference.com/w/cpp/io/cout
+```
 
- - `cin >> x >> y`: lee valores para las variables `x` e `y` por consola.
- - `cout << x << y`: imprime las variables `x` e `y` por consola.
-
-> https://en.cppreference.com/w/cpp/io/cin
->
-> https://en.cppreference.com/w/cpp/io/cout
+------------
 
 Para leer y escribir en la consola, C++ trae el paquete `<iostream>` que hace entrada y salida, a diferencia de C, sin necesidad de explicitar los tipos de dato.
 
@@ -116,14 +119,16 @@ int main() {
 
 La biblioteca estandar de C++ usa funciones de este estilo por todos lados.
 
-## `vector` (manejo de arrays)
+## vector (manejo de arrays)
 
- - `vector<char>`: el tipo de dato "vector de caracteres"
- - `vec.push_back(x)`: agrega el elemento `x` al final de `vec`, extendiendo su longitud.
- - `vec.size()`: devuelve la longitud de `vec`.
- - `vec[i]`: devuelve el elemento `i`-esimo de `vec`.
-
-> https://en.cppreference.com/w/cpp/container/vector
+```
+// documentación:
+// https://en.cppreference.com/w/cpp/container/vector
+vector<char> vec;  // declaro `vec` como un "vector de caracteres".
+vec.push_back(x);  // agrega el elemento `x` al final de `vec`.
+vec.size();        // devuelve la longitud de `vec`.
+vec[i];            // devuelve el elemento `i`-esimo de `vec`.
+```
 
 ------------
 
@@ -158,7 +163,7 @@ int main(){
 }
 ```
 
-## `string` (manejo de cadenas)
+## string (manejo de cadenas)
 
 > https://en.cppreference.com/w/cpp/header/string
 
