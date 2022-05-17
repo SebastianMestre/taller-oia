@@ -20,10 +20,16 @@ que indica por qué no se otorgaron más puntos:
 - MLE/liḿite de memoria excedido: el código enviado usa demasiada memoria
 
 Para determinar el puntaje parcial, cada problema define condiciones distintas pero se
-siguen un par de reglas. Primero, el problema se divide en subtareas, que son versiones
-especializadas, y más faciles, del problema, donde cada una aporta una cantidad de puntos
-menor a 100. Segundo, si se envia una solución que obtiene puntos en una subtarea, esos
-puntos se mantienen permanentemente. Los 100 puntos se obtienen resolviendo todas las subtareas.
+siguen un par de reglas.
+
+Primero, el problema se divide en subtareas, que son versiones
+especializadas y más faciles del problema, donde cada una aporta una cantidad de puntos
+menor a 100.
+
+Segundo, si se envia una solución que obtiene puntos en una subtarea, esos
+puntos se mantienen permanentemente.
+
+Tercero, los 100 puntos se obtienen resolviendo todas las subtareas.
 
 Para aclarar, estudiemos esta situación: Primero se envia una solución que obtiene
 15pts en la subtarea 1, y 0 en todas las demás. Después se envía una solucion que
