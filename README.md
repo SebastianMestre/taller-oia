@@ -189,51 +189,55 @@ int main() {
 }
 ```
 
-
 # Estrategia
-
-> pendiente
-
-Hay que robar puntos
 
 ## Subtareas
 
-## Resolución de problemas
+En general es mala idea apuntar a sacar 100pts en un problema cuando hay
+10pts o 15pts que salen fácil en ese u otro problema. Como regla de pulgar,
+una vez que tenemos más de 0pts en todos los problemas podemos empezar a
+pensar el caso general de algún problema.
+
+Matemáticamente, la cuenta es muy fácil. Está relación casi siempre vale:
+
+    (probabilidad de sacar 15 o más puntos en un problema) x 15pts > (probabilidad de sacar 100pts en un problema) x 100pts
+
+Y en esos casos, la conclusión es simple: **Hay que robar puntos**.
+
+## Resolución de Problemas
+
+## Estado Mental
 
 # Técnicas
 
-## Algoritmos Golosos
+## Algoritmos Golosos (Greedy Algorithms)
 
-> pendiente
+## Búsqueda Binaria (Binary Search)
 
-## Búsqueda Binaria
+Algunas formas comunes de aplicarla son:
 
-> pendiente
-
-### Patrones típicos
-
-- Greedy en la condición
-- Convertir a problema de decisión
+- Buscar valores en un arreglo
+- Ver a partir de que valor anda un greedy
+- Convertir un problema a su versión de decisión
 
 ## Programación Dinámica (DP)
 
-> pendiente
-
-Aplica cuando el problema tiene subestructura
-óptima con subproblemas que se solapan.
-
-### Patrones típicos
+Generalmente se usa para problemas sobre:
 
 - Tableros
 - Arreglos
 
-### Substructura Óptima
+Aplica cuando el problema tiene subestructura
+óptima con subproblemas que se solapan.
 
-"Dada una solución óptima, las partes de esa
+Decimos que un problema tiene subestructura óptima
+cuando "Dada una solución óptima, las partes de esa
 solución son óptimas para otro problema del mismo
 tipo"
 
-Hay que pensar "para atrás": nos imaginamos que
-el problema ya está resuelto y nos preguntamos
-si los prefijos de la solución resuelven el
-prefijo correspondiente del problema.
+Para darnos cuenta si un problema tiene
+subestructura óptima, Hay que pensar "para
+atrás": nos imaginamos que el problema ya está
+resuelto y nos preguntamos si los prefijos de la
+solución resuelven el prefijo correspondiente
+del problema.
