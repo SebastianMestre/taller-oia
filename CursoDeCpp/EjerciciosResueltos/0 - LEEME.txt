@@ -1,0 +1,16 @@
+Los ejercicios resueltos son presentados para que uno pueda corroborar los propios.
+Es recomendable mirarlos aún si se sabe que uno los pudo resolver correctamente.
+Quizás haya una solución distinta y se pueda aprender algo nuevo.
+
+
++---------------------------------------------------------------------------------------+
+| NO se debe mirar una solución sin antes haber pensado el problema por al menos 1 día. |
++---------------------------------------------------------------------------------------+
+
+
+
+Los nombres de los archivos corresponden primero al de la sección y luego al del ejercicio:
+
+	[Sección][Ejercicio].cpp (o también puede ser .txt)
+
+Por ejemplo: el archivo 0801.cpp es el ejercicio 1 de la sección 8.

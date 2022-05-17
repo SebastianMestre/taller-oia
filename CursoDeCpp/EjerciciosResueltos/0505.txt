@@ -1,0 +1,2 @@
+No. Los dos muestran los números de 0 a 4.
+En este caso, i++ y ++i lo único que hacen es i=i+1, porque no nos interesa el valor de la expresión.

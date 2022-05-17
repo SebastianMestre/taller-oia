@@ -1,0 +1,12 @@
+m = (20/11) + 20 = 1 + 20 = 21
+	20/11 = 1 porque estamos dividiendo ints.
+
+
+n = 2.5 * (20/11) = 2.5 * 1 = 2.5
+	20/11 = 1 porque estamos dividiendo ints.
+
+
+o = (2.5*20) / 11 = 50.0 / 11 = 4,5454...
+
+
+p = (int)2.5 = 2
