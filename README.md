@@ -19,11 +19,11 @@ Por ejemplo, para generar un ejecutable llamado `baldosas` a partir de un archiv
 ## cin y cout (entrada y salida por consola)
 
 ```c++
-cin >> x >> y;  // lee valores para las variables `x` e `y` por consola.
-cout << x << y; // imprime las variables `x` e `y` por consola.
 // documentación:
 // https://en.cppreference.com/w/cpp/io/cin
 // https://en.cppreference.com/w/cpp/io/cout
+cin >> x >> y;  // lee valores para las variables `x` e `y` por consola.
+cout << x << y; // imprime las variables `x` e `y` por consola.
 ```
 
 ------------
@@ -121,7 +121,7 @@ La biblioteca estandar de C++ usa funciones de este estilo por todos lados.
 
 ## vector (manejo de arrays)
 
-```
+```c++
 // documentación:
 // https://en.cppreference.com/w/cpp/container/vector
 vector<char> vec;  // declaro `vec` como un "vector de caracteres".
@@ -165,7 +165,11 @@ int main(){
 
 ## string (manejo de cadenas)
 
-> https://en.cppreference.com/w/cpp/header/string
+```c++
+https://en.cppreference.com/w/cpp/header/string
+```
+
+------------
 
 Parece razonable usar `vector<char>` para almacenar cadenas, pero C++ ya trae un tipo de datos especifico para este caso: `string`, del paquete `<string>`.
 
@@ -198,20 +202,30 @@ En general es mala idea apuntar a sacar 100pts en un problema cuando hay
 una vez que tenemos más de 0pts en todos los problemas podemos empezar a
 pensar el caso general de algún problema.
 
-Matemáticamente, la cuenta es muy fácil. Está relación casi siempre vale:
+Matemáticamente, la cuenta es muy fácil. Si esta relacion vale (y ojo que casi siempre vale)
 
-    (probabilidad de sacar 15 o más puntos en un problema) x 15pts > (probabilidad de sacar 100pts en un problema) x 100pts
+    (probabilidad de sacar 15pts o más) x 15 > (probabilidad de sacar 100pts) x 100
 
-Y en esos casos, la conclusión es simple: **Hay que robar puntos**.
+entonces la conclusión es simple: **Hay que robar puntos**.
 
 ## Resolución de Problemas
 
-## Estado Mental
+Una de las herramientas mas poderosas del cerebro humano es la capacidad de
+reconocer patrones y relaciones visualmente. Para aprovechar esto, recomiendo
+hacer muchos dibujos. Algunas ideas:
 
-En una competencia lo que más afecta nuestro rendimiento son los nervios y el estado de ánimo. Algunas ideas para bajar los nervios:
+- Dado un grafo, dibujarlo.
+- Dados dos arrays de longitud N, interpretar los elementos de uno como coordenadas-x, y los del otro como coordenadas-y en el plano cartesiano.
+- Dado un arbol, dibujarlo como un camino largo (un diámetro), y varias ramas chicas que le cuelgan.
 
-- tomar agua
-- ir al baño
+## Estado Físico y Mental
+
+En una competencia lo que más afecta nuestro rendimiento son los nervios, el cansancio
+y el estado de ánimo. Algunas ideas para combatir estos efectos:
+
+- tomar agua durante la competencia (la deshidratación en una competencia de 5 horas es muy real)
+- ir al baño durante la competencia (alejarse de la competencia un rato ayuda a bajar los nervios)
+- hacer competencias en internet para acostumbrarse
 
 # Técnicas
 
@@ -296,14 +310,6 @@ tienen subtareas que se pueden hacer con algoritmos golosos, asique tienen su lu
 Obviamente, también hay problemas que salen con 100pts usando algoritmos golosos, pero
 suelen usar ideas más complicadas.
 
-## Búsqueda Binaria (Binary Search)
-
-Algunas formas comunes de aplicarla son:
-
-- Buscar valores en un arreglo
-- Ver a partir de que valor anda un greedy
-- Convertir un problema a su versión de decisión
-
 ## Programación Dinámica (DP)
 
 Si la fuerza bruta es para sacar unos pocos puntos en cualquier problema, la
@@ -315,19 +321,43 @@ Generalmente se usa para problemas sobre:
 - Arreglos
 - Grafos Aciclicos
 
-Aplica cuando el problema tiene subestructura
-óptima con subproblemas que se solapan.
+Aplica cuando el problema tiene subestructura óptima con subproblemas que se solapan.
 
-Decimos que un problema tiene subestructura óptima
-cuando "Dada una solución óptima, las partes de esa
-solución son óptimas para otro problema del mismo
-tipo"
+Decimos que un problema tiene subestructura óptima cuando "Dada una solución óptima,
+las partes de esa solución son óptimas para otro problema del mismo tipo"
 
-Para darnos cuenta si un problema tiene
-subestructura óptima, Hay que pensar "para
-atrás": nos imaginamos que el problema ya está
-resuelto y nos preguntamos si los prefijos de la
-solución resuelven el prefijo correspondiente
-del problema.
+Para darnos cuenta si un problema tiene subestructura óptima, Hay que pensar "para
+atrás": nos imaginamos que el problema ya está resuelto y nos preguntamos si los prefijos
+de la solución resuelven el prefijo correspondiente del problema.
+
+## Ordenamiento
+
+Dado un array, suele ser buena idea ordenar sus elementos para lograr algoritmos más eficientes.
+
+## Búsqueda Binaria (Binary Search)
+
+La busqueda binaria sirve para contestar preguntas de la pinta:
+
+> ¿A partir de qué punto vale tal propiedad?
+
+Por ejemplo:
+
+> ¿Cuánto contrapeso necesita mi catapulta para alcanzar el castillo?
+> 
+> ¿A partir de qué posición me paso del elemento del array (ordenado) que estoy buscando?
+
+La idea fundamental es:
+
+1. Consideramos un intervalo `[a, b)`, donde la condición no vale en `a`, y sí vale en `b`.
+2. Probamos si la propiedad vale en el punto medio entre `a` y `b`, que llamamos `m`.
+3. Si la propiedad vale, pasamos a considerar el intervalo `[a, m)`.
+4. Si no vale, pasamos a considerar el intervalo `[m, b)`.
+5. Repetimos esto mientras que la diferencia entre `a` y `b` sea mayor a 1.
+
+Algunas formas comunes de aplicarla son:
+
+- Buscar elementos en un arreglo ordenado
+- Ver a partir de qué valor anda un greedy
+- Convertir un problema a su versión de decisión
 
 ## Algoritmos Sobre Grafos
