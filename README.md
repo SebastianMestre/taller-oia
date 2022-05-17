@@ -208,9 +208,93 @@ Y en esos casos, la conclusión es simple: **Hay que robar puntos**.
 
 ## Estado Mental
 
+En una competencia lo que más afecta nuestro rendimiento son los nervios y el estado de ánimo. Algunas ideas para bajar los nervios:
+
+- tomar agua
+- ir al baño
+
 # Técnicas
 
+Hay miles de técnicas de programación competitiva, pero en mi experiencia estas
+son las más rendidoras en OIA.
+
+## Fuerza Bruta / Backtracking (Brute Force / Backtracking)
+
+La técnica más confiable para sacar un par de puntos en cualquier problema es
+la fuerza bruta. Esta consiste en probar todas las soluciones y quedarse con la
+mejor, o la unica que es correcta. La forma más común de esto es con varios
+`for` anidados.
+
+Osea, los algoritmos de fuerza bruta suelen tener esta pinta:
+
+```c++
+for (i = 0; ...) {
+  for (j = 0; ...) {
+    for (k = 0; ...) {
+      for (q = 0; ...) {
+        if (es_solucion_valida(i, j, k, q)) {
+          return solucion(i, j, k, q);
+        }
+      }
+    }
+  }
+}
+```
+
+Obviamente, atacar un problema con fuerza bruta rara vez nos va a dar un puntaje
+alto, principalmente por el alto tiempo de ejecución. Para optimizar esto usamos
+el backtracking, una estrategia donde descartamos muchas posibilidades de un tirón.
+
+En general, esto se implementa con varios `if`s dentro de los bucles de la fuerza
+bruta.
+
+```c++
+for (i = 0; ...) {
+  for (j = 0; ...) {
+    if (j_es_demasiado_grande(i, j) {
+      // si entramos acá, nos salteamos todos los valores de `j` que nos faltan
+      // para el `i` actual, y podemos ahorrarnos muchísimas combinaciones.
+      break;
+    }
+    for (k = 0; ...) {
+      for (q = 0; ...) {
+        if (es_solucion_valida(i, j, k, q)) {
+          return solucion(i, j, k, q);
+        }
+      }
+    }
+  }
+}
+```
+
+Si encontramos buenas formas de optimizar el backtracking, a veces podemos robar
+un par de puntos más. Sin embargo, no suele ser suficiente para sacar "muchos"
+puntos en un problema. Para eso existen las otras técnicas.
+
+Ojo con ponerse a optimizar mucho un backtracking, porque no suele valer la pena.
+
 ## Algoritmos Golosos (Greedy Algorithms)
+
+Los algoritmos golosos consisten en tomar la mejor opción en cada paso de la resolución
+de un problema, sin considerar lo que puede pasar después. Esto suele ser mala idea porque,
+igual que en la vida, suele convenir perjudicarse en el "corto plazo" para obtener una
+mejor solución a "largo plazo".
+
+Un ejemplo clásico de los problemas de los algoritmos golosos es encontrar la forma
+de dar el vuelto con la menor cantidad de billetes/monedas posible. Si usamos las
+denominaciones típicas ($1, $2, $5, $10, $20, etc), podemos encontrar la solución siempre
+tomando el billete más grande que no se pase de lo que falta devolver. En cambio, si
+vivieramos en un país de locos donde los billetes son de $1, $5 y $7, podemos encontrarnos
+con soluciones suboptimas al seguir ese algoritmo. Por ejemplo, si queremos dar vuelto de
+$10, la solución óptima es, obviamente, dar dos monedas de $5 pero el agoritmo nos lleva
+a dar una moneda de $7 y tres monedas de $1.
+
+La moraleja es que es fácil creerse que un algoritmo goloso anda siempre cuando en realidad
+solo anda en casos especiales. Igual, ojo, la idea es robar puntos. Y muchos problemas
+tienen subtareas que se pueden hacer con algoritmos golosos, asique tienen su lugar.
+
+Obviamente, también hay problemas que salen con 100pts usando algoritmos golosos, pero
+suelen usar ideas más complicadas.
 
 ## Búsqueda Binaria (Binary Search)
 
@@ -222,10 +306,14 @@ Algunas formas comunes de aplicarla son:
 
 ## Programación Dinámica (DP)
 
+Si la fuerza bruta es para sacar unos pocos puntos en cualquier problema, la
+programación dinámica sirve para sacar "bastantes" puntos en "bastantes" problemas.
+
 Generalmente se usa para problemas sobre:
 
 - Tableros
 - Arreglos
+- Grafos Aciclicos
 
 Aplica cuando el problema tiene subestructura
 óptima con subproblemas que se solapan.
@@ -241,3 +329,5 @@ atrás": nos imaginamos que el problema ya está
 resuelto y nos preguntamos si los prefijos de la
 solución resuelven el prefijo correspondiente
 del problema.
+
+## Algoritmos Sobre Grafos
