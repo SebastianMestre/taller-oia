@@ -1,9 +1,16 @@
 # Introducción
 
-Este es un apunte de programación competitiva, dirigido a estudiantes del politécnico que participan del taller de OIA. Incluye información sobre C++, algoritmos, y consejos para tener en cuenta a la hora de competir. Se presupone un entorno basado en Linux.
+Este es un apunte de programación competitiva, dirigido a estudiantes del politécnico
+que participan del taller de OIA. Incluye información sobre C++, algoritmos, y
+consejos para tener en cuenta a la hora de competir. Aparte, en el mismo repositorio
+hay un curso de C++, el lenguaje de programación que se usa en OIA e IOI.
 
-Aparte, en el mismo repositorio hay un curso de C++, el lenguaje de programación que se usa en OIA e IOI.
+## Sobre el apunte
 
+En el apunte se dan ejercicios. Los que están marcados con un (\*) son particularmente difíciles.
+
+Al hablar sobre usar la consola, se presupone un entorno basado en Linux.
+ 
 ## Enlaces útiles
 
 - [Juez de la OIA](http://juez.oia.unsam.edu.ar/) - Sitio para leer y enviar soluciones a problemas de la OIA
@@ -58,9 +65,9 @@ necesarias para afrontar una competencia sin volverse loco, y poder divertirse.
 ## Subtareas
 
 En general es mala idea apuntar a sacar 100pts en un problema cuando hay
-10pts o 15pts que salen fácil en ese u otro problema. Como regla de pulgar,
-una vez que tenemos más de 0pts en todos los problemas podemos empezar a
-pensar el caso general de algún problema.
+10pts o 15pts que salen fácil en ese u otro problema. Como reglita, solo tendríamos
+que ponernos a pensar en el caso general de un problema una vez que tenemos mas de
+0pts en todos los problemas.
 
 Matemáticamente, la cuenta es muy fácil. Si esta relacion vale (y ojo que casi siempre vale)
 
@@ -70,8 +77,8 @@ entonces la conclusión es simple: **Hay que robar puntos**.
 
 ## Resolución de Problemas
 
-Una de las herramientas mas poderosas del cerebro humano es la capacidad de
-reconocer patrones y relaciones visualmente. Para aprovechar esto, recomiendo
+Una de las herramientas mas potentes del cerebro humano es la capacidad de
+reconocer patrones y relaciones visualmente. Para aprovechar esto, está bueno
 hacer muchos dibujos. Algunas ideas:
 
 - Dado un grafo, dibujarlo.
@@ -79,7 +86,7 @@ hacer muchos dibujos. Algunas ideas:
 - Dado un arbol, dibujarlo como un camino largo (un diámetro), y varias ramas chicas que le cuelgan.
 
 **nota:** Estas ideas particulares dependen de conocimientos especificos, asique
-está bueno releer esta sección tras aprender una nueva técnica.
+está bueno releer esta sección después de aprender una técnica nueva.
 
 ## Estado Físico y Mental
 
@@ -90,6 +97,142 @@ y el estado de ánimo. Algunas ideas para combatir estos efectos:
 - ir al baño durante la competencia (alejarse de la competencia un rato ayuda a bajar los nervios)
 - hacer competencias en internet para acostumbrarse
 
+# Complejidad Asintótica
+
+La complejidad asíntotica (o complejidad, a secas) es una forma de medir a grandes rasgos
+la eficiencia de un programa.
+
+Al usar complejidad para medir programas, los agrupamos en grupos, que llamamos "clases de
+complejidad".
+
+Estas son las ideas importantes de usar complejidad:
+
+- Hay un orden fijo entre las clases de complejidad
+- Si un programa está en una clase de complejidad menor que otro, casi seguro que el primero es más rápido.
+- Si sabemos la clase de complejidad de un programa, podemos estimar el tiempo de ejecución que tendrá al enviarlo para evaluación.
+
+Usando estas herramientas podemos darnos una idea de antemano, de qué complejidad
+tiene que tener la solución a un problema, y así descartamos muchas posibles ideas,
+sin tener que pensar en todos los detalles.
+
+La complejidad está dada por una expresión que representa la cantidad de operaciones que realiza un programa.
+
+Mas concretamente, expresamos la complejidad cómo una función de algún parámetro de la entrada. Por
+lo general, el tamaño del conjunto de datos, al que solemos llamar n. Para indicar complejidad
+escribimos la ley de la función entre paréntesis, siguiendo la letra 'O'. Por ejemplo: O(n)
+
+Ejemplos:
+
+La función de abajo tiene complejidad O(n), porque el bucle realiza n iteraciones.
+
+```c++
+int suma(int datos[], int n) {
+    int resultado = 0;
+    for (int i = 0; i < n; ++i)
+        resultado += datos[i];
+    return resultado;
+}
+```
+
+La función de abajo tiene complejidad O(n\*n), porque el bucle interno realiza n
+iteraciones, y se repite n veces, para un total de n\*n iteraciones.
+
+```c++
+int inversiones(int datos[], int n) {
+    int resultado = 0;
+    for (int i = 0; i < n; ++i)
+        for (int j = 0; j < n; ++j)
+            if (i < j && datos[i] > datos[j])
+                resultado += 1;
+    return resultado;
+}
+```
+
+Es importante notar que a los fines de la complejidad, si un programa realiza n,
+2\*n, n+50, etc. operaciones, es todo lo mismo, y la complejidad es O(n).
+
+Lo mismo pasa si el programa realiza n operaciones rápidas (como sumar enteros),
+o n operaciones lentas (como calcular raices cuadradas): en ambos casos es O(n).
+
+Aparte, si un programa hace dos cosas con distintas complejidades, la complejidad
+del programa es la mas grande de esas dos
+
+Ejemplo:
+
+Este programa tiene complejidad O(n\*n)
+
+```c++
+int cosa_loca(int datos[], int n) {
+    int x1 = suma(datos, n);          // complejidad O(n)
+    int x2 = inversiones(datos, n);   // complejidad O(n*n)
+    return x1 + x2;
+}
+```
+
+Ejercicio: dar las complejidades de estas funciones
+
+```c++
+int f0(int n) {
+  int res = 0;
+  for (int i = 0; i < n; ++i)
+      res = res + i;
+  return res;
+}
+
+int f1(int n) {
+  int res = 0;
+  for (int i = 0; i < n; ++i)
+      res = res + sqrt(i);
+  return res;
+}
+
+int f2(int n) {
+  int res = 0;
+  for (int i = n-1; i >= 0; --i)
+      res = res + 50;
+  return res;
+}
+
+int f3(int n) {
+  int res = 0;
+  for (int i = 0; i < n; ++i)
+      for (int j = 0; j < n; ++j)
+          res = res + 1;
+  return res;
+}
+
+int f4(int n) {
+  int res = 0;
+  for (int i = 0; i < n; ++i)
+      for (int j = i; j < n; ++j)
+          res = res + 1;
+  return res;
+}
+
+int f5(int n) {
+  int res = 0;
+  for (int i = 0; i < n; ++i)
+      for (int j = 0; j < i; ++j)
+          res = res + 1;
+  return res;
+}
+
+// (*)
+int f6(int n) {
+  int res = 0;
+  for (int i = 1; i < n; i = i * 2)
+      res = res + 1;
+  return res;
+}
+
+// (*)
+int f7(int n) {
+  int res = 0;
+  for (int i = n; i > 0; i = i / 2)
+      res = res + 1;
+  return res;
+}
+```
 
 # C++
 
@@ -101,7 +244,7 @@ Esta sección intenta dar los puntos más utiles de C++ (en cuanto a la OIA), pa
 
 Para compilar codigo en C por consola, se suele usar un comando como `gcc codigo.c -o mi_ejecutable`.
 
-En C++ es muy parecido, pero se debe usar el comando `g++`.
+En C++ es muy parecido, pero se usa el comando `g++`.
 
 Por ejemplo, para generar un ejecutable llamado `baldosas` a partir de un archivo de codigo fuente `baldosas.cpp`, escribimos `g++ baldosas.cpp -o baldosas`
 
@@ -117,9 +260,10 @@ cout << x << y; // imprime las variables `x` e `y` por consola.
 
 ------------
 
-Para leer y escribir en la consola, C++ trae el paquete `<iostream>` que hace entrada y salida, a diferencia de C, sin necesidad de explicitar los tipos de dato.
+Para leer y escribir en la consola, C++ trae el paquete `<iostream>` que hace entrada y salida,
+a diferencia de C, sin necesidad de explicitar los tipos de dato.
 
-Por ejemplo, para leer dos enteros y luego imprimir su suma podemos escribir el siguiente código en C.
+Por ejemplo, para leer dos enteros y después imprimir su suma podemos escribir el siguiente código en C.
 
 ```c
 #include<stdio.h>
@@ -260,9 +404,12 @@ https://en.cppreference.com/w/cpp/header/string
 
 ------------
 
-Parece razonable usar `vector<char>` para almacenar cadenas, pero C++ ya trae un tipo de datos especifico para este caso: `string`, del paquete `<string>`.
+Parece razonable usar `vector<char>` para almacenar cadenas, pero C++ ya trae un tipo
+de datos especifico para este caso: `string`, del paquete `<string>`.
 
-`string` ofrece mucha de la funcionalidad de `vector`, y algunas cosas mas. En particular, podemos leer y escribir en la consola usando `cin`/`cout`, lo cual no es posible con `vector`. Aparte, se puede iniciar usando un literal.
+`string` tiene mucha de la funcionalidad de `vector`, y un par de cosas mas. En
+particular, podemos leer y escribir en la consola usando `cin`/`cout`, lo cual no es
+posible con `vector`. Aparte, se puede iniciar usando un literal.
 
 ```c++
 #include <iostream>
@@ -270,24 +417,29 @@ Parece razonable usar `vector<char>` para almacenar cadenas, pero C++ ya trae un
 using namespace std;
 int main() {
     string baldosas;
-    cin >> baldosas;           // leemos un `string` por consola
 
-    int n = baldosas.size();   // igual que con `vector`, podemos tomar el tamano de un `string`
+    // leemos un `string` por consola
+    cin >> baldosas;
 
-    string letras = "AVR";     // iniciamos un `string` usando un literal
+    // igual que con `vector`, podemos tomar el tamano de un `string`
+    int n = baldosas.size();
+
+    // iniciamos un `string` usando un literal
+    string letras = "AVR";
 
     // ...
 
-    cout << baldosas << '\n';  // escribimos un `string` por consola
+    // escribimos un `string` por consola
+    cout << baldosas << '\n';
 }
 ```
 
 # Técnicas
 
-Para resolver problemas se suelen aplicar ideas conocidas. Entre estas algoritmos,
-estructuras de datos, y otras técnicas de programación. Hay miles de técnicas de
-programación competitiva pero, en mi experiencia, las de esta sección son las más
-rendidoras en OIA.
+Para resolver problemas se suelen aplicar ideas conocidas. Entre algoritmos,
+estructuras de datos, y otras técnicas de programación, hay miles de ideas
+que podemos aplicar en programación competitiva pero, en mi experiencia,
+estas son las que más sirven en OIA.
 
 ## Fuerza Bruta / Backtracking (Brute Force / Backtracking)
 
@@ -346,26 +498,43 @@ Ojo con ponerse a optimizar mucho un backtracking, porque no suele valer la pena
 
 ## Algoritmos Golosos (Greedy Algorithms)
 
-Los algoritmos golosos consisten en tomar la mejor opción en cada paso de la resolución
-de un problema, sin considerar lo que puede pasar después. Esto suele ser mala idea porque,
-igual que en la vida, suele convenir perjudicarse en el "corto plazo" para obtener una
-mejor solución a "largo plazo".
+Los algoritmos golosos consisten en tomar la mejor opción en cada paso (bajo algún
+concepto de "mejor") de la resolución de un problema, sin considerar lo que puede
+pasar después. Muchas veces no conviene usar algoritmos golosos porque tomar la
+mejor opción en un principio puede perjudicarnos más adelante.
 
-Un ejemplo clásico de los problemas de los algoritmos golosos es encontrar la forma
-de dar el vuelto con la menor cantidad de billetes/monedas posible. Si usamos las
-denominaciones típicas ($1, $2, $5, $10, $20, etc), podemos encontrar la solución siempre
-tomando el billete más grande que no se pase de lo que falta devolver. En cambio, si
-vivieramos en un país de locos donde los billetes son de $1, $5 y $7, podemos encontrarnos
-con soluciones suboptimas al seguir ese algoritmo. Por ejemplo, si queremos dar vuelto de
-$10, la solución óptima es, obviamente, dar dos monedas de $5 pero el agoritmo nos lleva
-a dar una moneda de $7 y tres monedas de $1.
+Por lo general, cuando uno piensa un problema, primero se le ocurre un algoritmo
+goloso que parece andar, y después resulta que no anda, o que solo resuelve
+algunos casos especiales.
 
-La moraleja es que es fácil creerse que un algoritmo goloso anda siempre cuando en realidad
-solo anda en casos especiales. Igual, ojo, la idea es robar puntos. Y muchos problemas
-tienen subtareas que se pueden hacer con algoritmos golosos, asique tienen su lugar.
+Un ejemplo clásico de esto es el problema de dar el vuelto con la menor cantidad de
+billetes/monedas posible.
 
-Obviamente, también hay problemas que salen con 100pts usando algoritmos golosos, pero
-suelen usar ideas más complicadas.
+Consideremos el siguiente algoritmo goloso:
+
+1. Tomo el billete mas grande que no supere lo que tengo que devolver.
+2. Separo ese billete y resto su valor a lo que me falta devolver.
+3. Si todavia me falta devolver más plata, vuelvo al paso 1.
+4. Si no, ya terminé.
+
+Usando billetes con las denominaciones típicas ($1, $2, $5, $10, $20, etc), este
+algoritmo siempre da el resultado correcto. Osea que siempre usa la menor cantidad
+de billetes posibles. Y, si testeamos el algoritmo apegandonos a estas
+denominaciones, es facil terminar convenciendonos de que anda siempre.
+
+En cambio, si vivieramos en un país de locos donde los billetes son de $1, $5 y $7,
+podemos encontrarnos con soluciones suboptimas al seguir ese algoritmo. Por ejemplo,
+si queremos dar vuelto de $10, la solución óptima es, obviamente, dar dos monedas de
+$5 (2 monedas en total) pero el agoritmo nos lleva a dar una moneda de $7 y tres
+monedas de $1 (4 monedas en total).
+
+La moraleja es que es fácil creerse que un algoritmo goloso anda, cuando la mayoría
+de los problemas no admiten una solución golosa.
+
+Igual, ojo, tampoco es que no sirvan para nada: hay algunos problemas que salen con
+100pts usando algoritmos golosos (lo normal es que combinen alguna otra idea, como
+ordenamiento), y muchos problemas tienen subtareas que se pueden hacer con algoritmos
+golosos, asique son muy útiles para robar puntos.
 
 ## Programación Dinámica (DP)
 
@@ -389,7 +558,23 @@ de la solución resuelven el prefijo correspondiente del problema.
 
 ## Ordenamiento
 
-Dado un array, suele ser buena idea ordenar sus elementos para lograr algoritmos más eficientes.
+Dado un array, puede ser buena idea ordenar sus elementos para lograr algoritmos más eficientes.
+
+Ejemplos:
+
+- En vez de búsqueda lineal en un array arbitrario, que tiene complejidad O(n), podemos hacer búsqueda binaria sobre un array ordenado, que tiene complejidad O(log(n)).
+- En vez de n busquedas lineales en el mismo arreglo con complejidad total O(n\*n), podemos aplicar un algoritmo de dos punteros, con complejidad O(n)
+- Una vez ordenados los datos, algunos problemas admiten soluciones golosas.
+- Una vez ordenados los datos, algunos problemas admiten soluciones con programación dinámica.
+
+```c++
+vector<int> vec;
+
+// ...
+
+// ordena los elementos de `vec`
+sort(vec.begin(), vec.end());
+```
 
 ## Búsqueda Binaria (Binary Search)
 
@@ -410,6 +595,10 @@ La idea fundamental es:
 3. Si la propiedad vale, pasamos a considerar el intervalo `[a, m)`.
 4. Si no vale, pasamos a considerar el intervalo `[m, b)`.
 5. Repetimos esto mientras que la diferencia entre `a` y `b` sea mayor a 1.
+
+Este tipo de busqueda tiene complejidad O(log n) (donde n es la diferencia inicial
+entre a y b). En cambio, la busqueda lineal (ir probando cada valor, uno por uno)
+tiene complejidad O(n).
 
 Algunas formas comunes de aplicarla son:
 
