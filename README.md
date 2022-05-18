@@ -2,6 +2,19 @@
 
 Este es un apunte de programación competitiva, dirigido a estudiantes del politécnico que participan del taller de OIA. Incluye información sobre C++, algoritmos, y consejos para tener en cuenta a la hora de competir. Se presupone un entorno basado en Linux.
 
+Aparte, en el mismo repositorio hay un curso de C++, el lenguaje de programación que se usa en OIA e IOI.
+
+## Enlaces útiles
+
+- [Juez de la OIA](http://juez.oia.unsam.edu.ar/) - Sitio para leer y enviar soluciones a problemas de la OIA
+- [Foro de la OIA](http://foro.oia.unsam.edu.ar/) - Sitio para discutir y pedir ayuda
+- [Wiki de la OIA](http://wiki.oia.unsam.edu.ar/) - Sitio con recursos sobre el contenido de la OIA
+- [CSES](https://cses.fi/problemset/) - Lista de problemas educativos (en inglés)
+- [Competitive Programmer's Handbook (pdf)](https://cses.fi/book.pdf) - Libro gratuito sobre programación competitiva (en inglés)
+- [uHunt](https://uhunt.onlinejudge.org/id/339) - Lista de problemas educativos (en inglés)
+- [Competitive Programming](https://cpbook.net/) - Libro pago sobre programación competitiva (en inglés, con traducción al español)
+- [Codeforces](https://codeforces.com/) - Sitio para competir, charlar, y practicar (en inglés)
+
 ## Puntaje
 
 En la OIA, cada problema puede otorgar un máximo de 100pts.
