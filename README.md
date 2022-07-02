@@ -601,7 +601,7 @@ Por ejemplo:
 
 > ¿Cuánto contrapeso necesita mi catapulta para alcanzar el castillo?
 > 
-> ¿A partir de qué posición me paso del elemento del array (ordenado) que estoy buscando?
+> ¿A partir de qué posición me paso del elemento del array (ordenado) que estoy buscando? (como en un diccionario ordenado alfabéticamente)
 
 Este tipo de busqueda tiene complejidad O(log n) (donde n es la diferencia inicial
 entre a y b). En cambio, la busqueda lineal (ir probando cada valor, uno por uno)
