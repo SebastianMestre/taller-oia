@@ -184,9 +184,9 @@ bool es_primo(int X) {
 
 Lxs lectorxs amantes de la matemática pueden revisar este esbozo de demostración:
 
-Hipotesis: X es un numero natural, y no tiene divisores menores o iguales a raiz(X).
+Hipotesis: `X` es un numero natural, y no tiene divisores menores o iguales a `raiz(X)`.
 
-Tesis: X no tiene divisores mayores a raiz(X).
+Tesis: `X` no tiene divisores mayores a `raiz(X)`.
 
 Demostración:
 
@@ -200,7 +200,9 @@ Como `p` es mayor a `raiz(X)`, entonces `q` debe ser menor a `raiz(X)`.
 
 `q` es divisor de `X` y es menor a `raiz(X)`. Por lo tanto `X` tiene un divisor menor a raiz(X)
 
-Pero esto contradice la hipotesis, asique no puede existir un p divisor de X, mayor a raiz(X).
+Pero esto contradice la hipotesis, asique no puede existir un `p` divisor de `X`, mayor a `raiz(X)`.
+
+Concluimos que `X` no tiene divisores mayores a `raiz(X)`.
 
 # Algoritmos con arreglos
 
